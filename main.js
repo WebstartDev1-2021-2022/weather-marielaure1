@@ -10,6 +10,7 @@ const background = document.querySelector(".bg-fixed")
 const chargement = document.querySelector(".chargement")
 const now = document.querySelector(".now")
 const hours_days = document.querySelector(".hours-days")
+const body = document.querySelector("body")
 let nowDay =  new Date().getDay()
 
 // TODO: Récupérer les éléments  du DOM dans des constantes
@@ -51,7 +52,7 @@ const getWeatherOf = async (position) => {
         console.log(sr)
 
         if (sr <= current_dt && current_dt < ss ){
-            background.style.backgroundImage = `url("./img/jour.jpg")`
+            background.style.backgroundImage = `url("./img/jour.jpeg")`
             
         } else{
             background.style.backgroundImage = `url("./img/soir.jpeg")`

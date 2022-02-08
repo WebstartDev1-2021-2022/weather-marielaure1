@@ -1,6 +1,7 @@
 body {
   position: relative;
   font-family: Arial, Helvetica, sans-serif;
+  color: #FAFAFA;
 }
 
 main {
@@ -70,7 +71,6 @@ main > .now > h2 {
   font-size: 30px;
   margin-top: 20vh;
   text-align: center;
-  color: #fafafa;
   font-weight: 600;
 }
 
@@ -87,7 +87,6 @@ main > .now > .now-infos {
   width: 60%;
   position: absolute;
   bottom: 0px;
-  color: #fafafa;
 }
 
 main > .now > .now-infos > .description {
@@ -102,7 +101,7 @@ main > .now > .now-infos > .temperature {
 }
 
 main > .hours-days {
-  background-color: rgba(86, 124, 124, 0.157);
+  background-color: rgba(86, 124, 124, 0.521);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   display: none;
@@ -133,7 +132,6 @@ main > .hours-days > .hours > .hour {
   scroll-padding: 0 20px;
   font-size: 18px;
   text-align: center;
-  color: #FAFAFA;
   font-weight: 600;
 }
 
@@ -148,7 +146,6 @@ main > .hours-days > .hours > .hour > .hour-icon {
 main > .hours-days > .days {
   height: 70vh;
   width: 100%;
-  color: #FAFAFA;
 }
 
 main > .hours-days > .days > .day {
