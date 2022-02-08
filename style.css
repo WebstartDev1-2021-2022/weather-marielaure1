@@ -17,7 +17,6 @@ main {
 
 main > h1 {
   font-size: 40px;
-  color: #fafafa;
   position: fixed;
   background-color: rgba(2, 112, 110, 0.157);
   -webkit-backdrop-filter: blur(20px);
@@ -185,5 +184,7 @@ main > .hours-days > .days > .day > .day-temperature {
   width: 100%;
   height: 100%;
   z-index: 0;
+  -webkit-filter: saturate(1);
+          filter: saturate(1);
 }
 /*# sourceMappingURL=style.css.map */

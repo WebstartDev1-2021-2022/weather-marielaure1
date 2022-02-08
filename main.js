@@ -29,15 +29,20 @@ const getWeatherOf = async (position) => {
 
         const {latitude, longitude} = position.coords
 
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`)
-        const data = await res.json()
+        const allPromise = Promise.all([
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`),
+            fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${longitude}&lat=${latitude}`)
+        ])
 
-        updateUI(data)
+        const [weatherResult, cityResult] = await allPromise   // Destructuration
+        const weatherData = await weatherResult.json()
+        const cityData = await cityResult.json()
+        
+        // API Open weather map
+        updateUI(weatherData)
 
         // Ville de l'utilisateur avec l'API https://adresse.data.gouv.fr/api-doc/adresse#reverse
-        const locateUser = await (await fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${longitude}&lat=${latitude}`)).json()
-
-        console.log(locateUser)
+        updateUI(cityData)   
 
         // Disparition du chargement de la page
         chargement.style.display = "none";
@@ -46,13 +51,12 @@ const getWeatherOf = async (position) => {
 
 
         // Changement du background selon la nuit et le jour
-        const sr = new Date(data.current.sunrise * 1000)
-        const ss = new Date(data.current.sunset * 1000)
-        let current_dt = new Date(data.current.dt * 1000)
-        console.log(sr)
+        const sr = new Date(weatherData.current.sunrise * 1000)
+        const ss = new Date(weatherData.current.sunset * 1000)
+        let current_dt = new Date(weatherData.current.dt * 1000)
 
         if (sr <= current_dt && current_dt < ss ){
-            background.style.backgroundImage = `url("./img/jour.jpeg")`
+            background.style.backgroundImage = `url("./img/jour.jpg")`
             
         } else{
             background.style.backgroundImage = `url("./img/soir.jpeg")`
@@ -60,38 +64,37 @@ const getWeatherOf = async (position) => {
 
 
         // NOW : heure actuelle
-        city.innerHTML= `${locateUser.features[0].properties.city}`
-        nowIcon.src = `img/${data.current.weather[0].icon}.svg`
-        nowDescription.innerText= `${data.current.weather[0].description}`
-        nowTemperature.innerText= `${Math.trunc(data.current.temp)}°`
+        city.innerText= `${cityData.features[0].properties.city}`
+        nowIcon.src = `img/${weatherData.current.weather[0].icon}.svg`
+        nowDescription.innerText= `${weatherData.current.weather[0].description}`
+        nowTemperature.innerText= `${Math.trunc(weatherData.current.temp)}°`
 
 
         // HOURS : 24h
         for(let i = 0; i < 24; i++){
 
-            hour[i].innerHTML = `<p class="hour-text">${new Date(data.hourly[i].dt * 1000).getHours()}h</p>
-                                 <img class="hour-icon" src="img/${data.hourly[i].weather[0].icon}.svg" alt="img temps">
-                                 <p class="hour-temperature">${Math.trunc(data.hourly[i].temp)}°</p>`
+            hour[i].innerHTML = `<p class="hour-text">${new Date(weatherData.hourly[i].dt * 1000).getHours()}h</p>
+                                 <img class="hour-icon" src="img/${weatherData.hourly[i].weather[0].icon}.svg" alt="img temps">
+                                 <p class="hour-temperature">${Math.trunc(weatherData.hourly[i].temp)}°</p>`
         }
         
 
         // DAYS : 
         let week = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
         
-
         for(let k = 0; k < week.length; k++){
 
             if (k > week.length) {
                 k = 0
             }
 
-            let hourly_dt = new Date(data.daily[k].dt * 1000).getDay()
+            let hourly_dt = new Date(weatherData.daily[k].dt * 1000).getDay()
             
 
             day[k].innerHTML = `<p class="day-text">${week[hourly_dt]}</p>
-                                <img class="day-icon" src="img/${data.daily[k].weather[0].icon}.svg" alt="img temps">
-                                <p class="day-temperature">min ${Math.trunc(data.daily[k].temp.min)}°</p>
-                                <p class="day-temperature">max ${Math.trunc(data.daily[k].temp.max)}°</p>`
+                                <img class="day-icon" src="img/${weatherData.daily[k].weather[0].icon}.svg" alt="img temps">
+                                <p class="day-temperature">min ${Math.trunc(weatherData.daily[k].temp.min)}°</p>
+                                <p class="day-temperature">max ${Math.trunc(weatherData.daily[k].temp.max)}°</p>`
         }
         
 
