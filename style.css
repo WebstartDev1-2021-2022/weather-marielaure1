@@ -1,0 +1,192 @@
+body {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  z-index: 2;
+}
+
+main > h1 {
+  font-size: 40px;
+  color: #fafafa;
+  position: fixed;
+  background-color: rgba(2, 112, 110, 0.157);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  width: 100%;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 3;
+}
+
+main > .chargement {
+  height: 100vh;
+  -webkit-transition: opacity 1.1s ease-out;
+  transition: opacity 1.1s ease-out;
+}
+
+main > .chargement > img {
+  margin-top: 70%;
+  margin-left: 50%;
+  width: 150px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+main > .chargement > p {
+  color: #272727;
+  text-align: center;
+  font-weight: bold;
+}
+
+main > .now {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: 20px;
+  z-index: 2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: none;
+}
+
+main > .now > h2 {
+  font-size: 30px;
+  margin-top: 20vh;
+  text-align: center;
+  color: #fafafa;
+  font-weight: 600;
+}
+
+main > .now > img {
+  height: 20%;
+  width: auto;
+  margin-top: 5vh;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+main > .now > .now-infos {
+  width: 60%;
+  position: absolute;
+  bottom: 0px;
+  color: #fafafa;
+}
+
+main > .now > .now-infos > .description {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+main > .now > .now-infos > .temperature {
+  font-size: 90px;
+}
+
+main > .hours-days {
+  background-color: rgba(86, 124, 124, 0.157);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  display: none;
+}
+
+main > .hours-days > .hours {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 20vh;
+  overflow: scroll;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  z-index: 2;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.13);
+}
+
+main > .hours-days > .hours > .hour {
+  height: 15vh;
+  width: 10vh;
+  margin: 0 10px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  scroll-snap-align: start;
+  scroll-padding: 0 20px;
+  font-size: 18px;
+  text-align: center;
+  color: #FAFAFA;
+  font-weight: 600;
+}
+
+main > .hours-days > .hours > .hour > .hour-icon {
+  height: 50%;
+  width: auto;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+main > .hours-days > .days {
+  height: 70vh;
+  width: 100%;
+  color: #FAFAFA;
+}
+
+main > .hours-days > .days > .day {
+  height: calc(100%/7);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.13);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main > .hours-days > .days > .day > .day-text {
+  width: 30%;
+  text-transform: capitalize;
+  margin-left: 5%;
+  font-size: 18px;
+}
+
+main > .hours-days > .days > .day > .day-icon {
+  height: 80%;
+  width: auto;
+  margin-right: 5%;
+}
+
+main > .hours-days > .days > .day > .day-temperature {
+  margin-right: 5%;
+  font-size: 16px;
+}
+
+.bg-fixed {
+  position: fixed;
+  background-image: url("./img/bg-chargement.jpeg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+/*# sourceMappingURL=style.css.map */
