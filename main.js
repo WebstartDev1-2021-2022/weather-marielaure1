@@ -51,7 +51,7 @@ const getWeatherOf = async (position) => {
 
 
         // Changement du background selon la nuit et le jour
-        const sr = new Date(weatherData.current.sunrise * 1000)
+        const sr = new Date(weatherData.current.sunrise * 1000)  // dt temps en timestamp Unix = tps en ms depuis janvier 1970 = pour convertir faire *1000
         const ss = new Date(weatherData.current.sunset * 1000)
         let current_dt = new Date(weatherData.current.dt * 1000)
 
@@ -81,7 +81,7 @@ const getWeatherOf = async (position) => {
 
         // DAYS : 
         let week = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
-        
+        console.log(new Date())
         for(let k = 0; k < week.length; k++){
 
             if (k > week.length) {
@@ -93,8 +93,8 @@ const getWeatherOf = async (position) => {
 
             day[k].innerHTML = `<p class="day-text">${week[hourly_dt]}</p>
                                 <img class="day-icon" src="img/${weatherData.daily[k].weather[0].icon}.svg" alt="img temps">
-                                <p class="day-temperature">min ${Math.trunc(weatherData.daily[k].temp.min)}°</p>
-                                <p class="day-temperature">max ${Math.trunc(weatherData.daily[k].temp.max)}°</p>`
+                                <p class="day-temperature">Min : ${Math.trunc(weatherData.daily[k].temp.min)}°</p>
+                                <p class="day-temperature">Max : ${Math.trunc(weatherData.daily[k].temp.max)}°</p>`
         }
         
 
