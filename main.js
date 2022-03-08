@@ -81,17 +81,17 @@ const getWeatherOf = async (position) => {
 
         // DAYS : 
         let week = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
-        console.log(new Date())
+        console.log(new Date().getDay())
         for(let k = 0; k < week.length; k++){
 
-            if (k > week.length) {
-                k = 0
-            }
+            // if (k > week.length) {
+            //     k = 0
+            // }
 
-            let hourly_dt = new Date(weatherData.daily[k].dt * 1000).getDay()
+            let daily_dt = new Date(weatherData.daily[k].dt * 1000).getDay()
             
 
-            day[k].innerHTML = `<p class="day-text">${week[hourly_dt]}</p>
+            day[k].innerHTML = `<p class="day-text">${week[daily_dt]}</p>
                                 <img class="day-icon" src="img/${weatherData.daily[k].weather[0].icon}.svg" alt="img temps">
                                 <p class="day-temperature">Min : ${Math.trunc(weatherData.daily[k].temp.min)}°</p>
                                 <p class="day-temperature">Max : ${Math.trunc(weatherData.daily[k].temp.max)}°</p>`
@@ -105,6 +105,7 @@ const getWeatherOf = async (position) => {
 
 const updateUI = (data) => {
     console.log(data)
+    // const newContent = template.content.cloneNode
 }
 
 

@@ -100,7 +100,7 @@ main > .now > .now-infos > .temperature {
 }
 
 main > .hours-days {
-  background-color: rgba(2, 112, 110, 0.157);
+  background-color: rgba(2, 112, 110, 0.295);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   display: none;
