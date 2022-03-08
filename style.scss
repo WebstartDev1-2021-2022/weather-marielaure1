@@ -87,6 +87,16 @@ main{
         
     }
 
+    & > .down-arrow{
+        position: absolute;
+        top: 95vh;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 30px;
+        width: 30px;
+        animation: arrow 1s infinite;
+      }
+
     & > .hours-days{
         background-color:rgba(2, 112, 110, 0.295);
         backdrop-filter: blur(10px);
