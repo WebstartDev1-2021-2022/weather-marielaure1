@@ -151,6 +151,8 @@ main > .hours-days > .hours > .hour {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   scroll-snap-align: start;
+  -ms-scroll-snap-type: x proximity;
+      scroll-snap-type: x proximity;
   scroll-padding: 0 20px;
   font-size: 18px;
   text-align: center;
@@ -196,6 +198,7 @@ main > .hours-days > .days > .day > .day-icon {
 main > .hours-days > .days > .day > .day-temperature {
   margin-right: 3%;
   font-size: 16px;
+  width: 20%;
 }
 
 @-webkit-keyframes arrow {
