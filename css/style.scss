@@ -63,7 +63,7 @@ main{
 
         & > h2{
             font-size: 30px;
-            margin-top: 20vh;
+            margin-top: 30vh;
             text-align: center;
             font-weight: 600;
         }
@@ -79,8 +79,7 @@ main{
 
         & > .now-infos{
             position: absolute;
-            width: 60%;
-            bottom: 0px;
+            bottom: 20px;
 
             & > .description{
                 font-size: 20px;
