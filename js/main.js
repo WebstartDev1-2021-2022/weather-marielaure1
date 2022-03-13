@@ -50,10 +50,10 @@ const getWeatherOf = async (position) => {
         let current_dt = new Date(weatherData.current.dt * 1000)
 
         if (sunrise <= current_dt && current_dt < sunset ){
-            main.style.backgroundImage = `url("../img/jour.jpg")`
+            main.style.backgroundImage = `url("./img/jour.jpg")`
             
         } else{
-            main.style.backgroundImage = `url("../img/soir.jpeg")`
+            main.style.backgroundImage = `url("./img/soir.jpeg")`
         }
 
         // NOW : heure actuelle
