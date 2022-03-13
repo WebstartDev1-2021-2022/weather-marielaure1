@@ -1,16 +1,10 @@
 const apiKey = "77a59e5a2e6b714cd3f846b45a86a0d4"
 
-const nowIcon = document.querySelector(".now-icon")
-const nowDescription = document.querySelector(".description")
-const nowTemperature = document.querySelector(".temperature")
-const hour = document.querySelectorAll(".hour")
-const day = document.querySelectorAll(".day")
-const city = document.querySelector("h2")
-const background = document.querySelector(".bg-fixed")
+const template = document.querySelector("template")
+const main = document.querySelector("main")
 const chargement = document.querySelector(".chargement")
-const now = document.querySelector(".now")
-const hours_days = document.querySelector(".hours-days")
-const body = document.querySelector("body")
+
+
 let nowDay =  new Date().getDay()
 
 // TODO: Récupérer les éléments  du DOM dans des constantes
@@ -42,12 +36,23 @@ const getWeatherOf = async (position) => {
         updateUI(weatherData)
 
         // Ville de l'utilisateur avec l'API https://adresse.data.gouv.fr/api-doc/adresse#reverse
-        updateUI(cityData)   
+        // updateUI(cityData)   
 
         // Disparition du chargement de la page
-        chargement.style.display = "none";
-        now.style.display = "block";
-        hours_days.style.display = "block";
+        var clone = document.importNode(template.content, true);
+        main.removeChild(chargement)
+        main.appendChild(clone);
+    
+        const city = document.querySelector("h2")
+        const nowIcon = document.querySelector(".now-icon")
+        const nowDescription = document.querySelector(".description")
+        const nowTemperature = document.querySelector(".temperature")
+
+        const hour = document.querySelectorAll(".hour")
+        const day = document.querySelectorAll(".day")
+
+        // const now = document.querySelector(".now")
+        // const hours_days = document.querySelector(".hours-days")
 
 
         // Changement du background selon la nuit et le jour
@@ -56,10 +61,10 @@ const getWeatherOf = async (position) => {
         let current_dt = new Date(weatherData.current.dt * 1000)
 
         if (sr <= current_dt && current_dt < ss ){
-            background.style.backgroundImage = `url("./img/jour.jpg")`
+            main.style.backgroundImage = `url("../img/jour.jpg")`
             
         } else{
-            background.style.backgroundImage = `url("./img/soir.jpeg")`
+            background.style.backgroundImage = `url("../img/soir.jpeg")`
         }
 
 
@@ -74,7 +79,7 @@ const getWeatherOf = async (position) => {
         for(let i = 0; i < 24; i++){
 
             hour[i].innerHTML = `<p class="hour-text">${new Date(weatherData.hourly[i].dt * 1000).getHours()}h</p>
-                                 <img class="hour-icon" src="img/${weatherData.hourly[i].weather[0].icon}.svg" alt="img temps">
+                                 <img class="hour-icon" src="./img/${weatherData.hourly[i].weather[0].icon}.svg" alt="img temps">
                                  <p class="hour-temperature">${Math.trunc(weatherData.hourly[i].temp)}°</p>`
         }
         
@@ -92,7 +97,7 @@ const getWeatherOf = async (position) => {
             
 
             day[k].innerHTML = `<p class="day-text">${week[daily_dt]}</p>
-                                <img class="day-icon" src="img/${weatherData.daily[k].weather[0].icon}.svg" alt="img temps">
+                                <img class="day-icon" src="./img/${weatherData.daily[k].weather[0].icon}.svg" alt="img temps">
                                 <p class="day-temperature">Min : ${Math.trunc(weatherData.daily[k].temp.min)}°</p>
                                 <p class="day-temperature">Max : ${Math.trunc(weatherData.daily[k].temp.max)}°</p>`
         }

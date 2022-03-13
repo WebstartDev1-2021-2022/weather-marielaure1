@@ -1,28 +1,15 @@
 body {
-  position: relative;
   font-family: Arial, Helvetica, sans-serif;
   color: #FAFAFA;
 }
 
-main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  width: 100%;
-  z-index: 2;
-}
-
-main > h1 {
-  font-size: 40px;
+h1 {
   position: fixed;
+  width: 100%;
+  height: 10vh;
   background-color: rgba(2, 112, 110, 0.157);
   -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
-  width: 100%;
-  height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,18 +20,35 @@ main > h1 {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 3;
+  font-size: 40px;
+}
+
+main {
+  position: absolute;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  overflow-x: hidden;
+  z-index: 2;
 }
 
 main > .chargement {
   height: 100vh;
+  background-image: url("../img/bg-chargement.jpeg");
+  background-position: center;
+  background-size: cover;
   -webkit-transition: opacity 1.1s ease-out;
   transition: opacity 1.1s ease-out;
 }
 
 main > .chargement > img {
+  width: 150px;
   margin-top: 70%;
   margin-left: 50%;
-  width: 150px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
@@ -56,14 +60,13 @@ main > .chargement > p {
 }
 
 main > .now {
+  position: relative;
   height: 100vh;
   width: 100%;
-  position: relative;
   padding: 20px;
   z-index: 2;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: none;
 }
 
 main > .now > h2 {
@@ -73,7 +76,7 @@ main > .now > h2 {
   font-weight: 600;
 }
 
-main > .now > img {
+main > .now > .now-icon {
   height: 20%;
   width: auto;
   margin-top: 5vh;
@@ -83,8 +86,8 @@ main > .now > img {
 }
 
 main > .now > .now-infos {
-  width: 60%;
   position: absolute;
+  width: 60%;
   bottom: 0px;
 }
 
@@ -99,53 +102,51 @@ main > .now > .now-infos > .temperature {
   font-size: 90px;
 }
 
-.down-arrow{
+main > .now > .down-arrow {
   position: absolute;
-  top: 95vh;
+  bottom: 5vh;
   left: 50%;
-  transform: translateX(-50%);
-  height: 30px;
-  width: 30px;
-  animation: arrow 1s infinite;
+  width: 25px;
+  height: 25px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: arrow 1.5s infinite;
+          animation: arrow 1.5s infinite;
 }
 
-@keyframes arrow{
-  0%{
-    top: 90vh;
-  }
-  50%{
-    top: 95vh;
-  }
-  100%{
-    top: 90vh;
-  }
+main > .bg-blur {
+  position: absolute;
+  top: 100vh;
+  width: 100%;
+  height: 90vh;
+  background-color: rgba(2, 112, 110, 0.157);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  z-index: 2;
 }
 
 main > .hours-days {
-  background-color: rgba(2, 112, 110, 0.295);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  display: none;
+  position: relative;
+  z-index: 3;
 }
 
 main > .hours-days > .hours {
+  height: 20vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 20vh;
   overflow: scroll;
   -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
-  z-index: 2;
   border-bottom: 2px solid rgba(0, 0, 0, 0.13);
 }
 
 main > .hours-days > .hours > .hour {
   height: 15vh;
-  width: 10vh;
+  width: 80px;
   margin: 0 10px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -153,7 +154,6 @@ main > .hours-days > .hours > .hour {
   scroll-padding: 0 20px;
   font-size: 18px;
   text-align: center;
-  font-weight: 600;
 }
 
 main > .hours-days > .hours > .hour > .hour-icon {
@@ -181,7 +181,7 @@ main > .hours-days > .days > .day {
 }
 
 main > .hours-days > .days > .day > .day-text {
-  width: 30%;
+  width: 25%;
   text-transform: capitalize;
   margin-left: 5%;
   font-size: 18px;
@@ -194,19 +194,31 @@ main > .hours-days > .days > .day > .day-icon {
 }
 
 main > .hours-days > .days > .day > .day-temperature {
-  margin-right: 5%;
+  margin-right: 3%;
   font-size: 16px;
 }
 
-.bg-fixed {
-  position: fixed;
-  background-image: url("./img/bg-chargement.jpeg");
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  -webkit-filter: saturate(1);
-          filter: saturate(1);
+@-webkit-keyframes arrow {
+  0% {
+    bottom: 1vh;
+  }
+  50% {
+    bottom: 5vh;
+  }
+  100% {
+    bottom: 1vh;
+  }
+}
+
+@keyframes arrow {
+  0% {
+    bottom: 1vh;
+  }
+  50% {
+    bottom: 5vh;
+  }
+  100% {
+    bottom: 1vh;
+  }
 }
 /*# sourceMappingURL=style.css.map */

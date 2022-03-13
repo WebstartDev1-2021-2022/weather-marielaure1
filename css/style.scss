@@ -1,56 +1,59 @@
 body{
-    position: relative;
     font-family: Arial, Helvetica, sans-serif;
     color: #FAFAFA;
 }
 
+h1{
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+    background-color:rgba(2, 112, 110, 0.157);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-size: 40px;
+}
+
 main{
     position: absolute;
-    top: 0;
-    left: 0;
     height: fit-content;
     width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
     z-index: 2;
-
-    & > h1{
-        font-size: 40px;
-        position: fixed;
-        background-color:rgba(2, 112, 110, 0.157);
-        backdrop-filter: blur(20px);
-        width: 100%;
-        height: 10vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 3;
-    }
-
+    
     & > .chargement{
         height: 100vh;
+        background-image: url("../img/bg-chargement.jpeg");
+        background-position: center;
+        background-size: cover;
         transition: opacity 1.1s ease-out;
-
+    
         & > img {
+            width: 150px;
             margin-top: 70%;
             margin-left: 50%;
-            width: 150px;
             transform: translate(-50%, -50%);
         }
-
+    
         & > p {
             color: rgb(216, 216, 216);
             text-align: center;
             font-weight: bold;
         }
     }
-    
+
     & > .now{
+        position: relative;
         height: 100vh;
         width: 100%;
-        position: relative;
         padding: 20px;
         z-index: 2;
         box-sizing: border-box;
-        display: none;
 
         & > h2{
             font-size: 30px;
@@ -59,7 +62,7 @@ main{
             font-weight: 600;
         }
 
-        & > img{
+        & > .now-icon{
             height: 20%;
             width: auto;
             margin-top: 5vh;
@@ -69,8 +72,8 @@ main{
         
 
         & > .now-infos{
-            width: 60%;
             position: absolute;
+            width: 60%;
             bottom: 0px;
 
             & > .description{
@@ -79,48 +82,55 @@ main{
                 text-transform: capitalize;
                 margin-bottom: 20px;
             }
+
             & > .temperature{
                 font-size: 90px;
             }
         }
 
-        
+        & > .down-arrow{
+            position: absolute;
+            bottom: 5vh;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            transform: translateX(-50%);
+            animation: arrow 1.5s infinite;
+        }
     }
 
-    & > .down-arrow{
+    & > .bg-blur{
         position: absolute;
-        top: 95vh;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 30px;
-        width: 30px;
-        animation: arrow 1s infinite;
-      }
+        top: 100vh;
+        width: 100%;
+        height: 90vh;
+        background-color:rgba(2, 112, 110, 0.157);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+    }
 
     & > .hours-days{
-        background-color:rgba(2, 112, 110, 0.295);
-        backdrop-filter: blur(10px);
-        display: none;
+        position: relative;
+        z-index: 3;
+        
 
         & > .hours{
+            height: 20vh;
             display: flex;
             align-items: center;
-            height: 20vh;
             overflow: scroll;
             scroll-snap-type: x mandatory;
-            z-index: 2;
             border-bottom: 2px solid rgba(0, 0, 0, 0.13);
     
             & > .hour{
                 height: 15vh;
-                width: 10vh;
+                width: 80px;
                 margin: 0 10px;
                 flex-shrink: 0;
                 scroll-snap-align: start;
                 scroll-padding: 0 20px; 
                 font-size: 18px;
                 text-align: center;
-                font-weight: 600;
                 // x proximity
     
                 & > .hour-icon{
@@ -143,7 +153,7 @@ main{
                 align-items: center;
     
                 & > .day-text{
-                    width: 30%;
+                    width: 25%;
                     text-transform: capitalize;
                     margin-left: 5%;
                     font-size: 18px;
@@ -156,7 +166,7 @@ main{
                 }
     
                 & > .day-temperature{
-                    margin-right: 5%;
+                    margin-right: 3%;
                     font-size: 16px;
                 }
             }
@@ -164,13 +174,16 @@ main{
     }
 }
 
-.bg-fixed{
-    position: fixed;
-    background-image: url("./img/bg-chargement.jpeg");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    filter: saturate(1);
+@keyframes arrow{
+    0%{
+        bottom: 1vh;
+    }
+
+    50%{
+        bottom: 5vh;
+    }
+
+    100%{
+        bottom: 1vh;
+    }
 }
