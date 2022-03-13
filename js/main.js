@@ -53,7 +53,7 @@ const getWeatherOf = async (position) => {
             main.style.backgroundImage = `url("../img/jour.jpg")`
             
         } else{
-            background.style.backgroundImage = `url("../img/soir.jpeg")`
+            main.style.backgroundImage = `url("../img/soir.jpeg")`
         }
 
         // NOW : heure actuelle
