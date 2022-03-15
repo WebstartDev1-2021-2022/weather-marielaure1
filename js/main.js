@@ -5,9 +5,9 @@ const main = document.querySelector("main")
 const chargement = document.querySelector(".chargement")
 
 // Traiter les erreurs de navigator.geolocation.getCurrentPosition
-const handleGetCurrentPositionError = (error) => {
-    alert("Votre géolocalisation ne fonctionne pas, vérifiez vos paramètres.")
-}
+// const handleGetCurrentPositionError = (error) => {
+//     alert("Votre géolocalisation ne fonctionne pas, vérifiez vos paramètres.")
+// }
 
 // Requête fetch
 const getWeatherOf = async (position) => {
@@ -32,9 +32,9 @@ const getWeatherOf = async (position) => {
         updateUI(weatherData)
 
         // Disparition du chargement de la page
-        var clone = document.importNode(template.content, true);
+        var clone = document.importNode(template.content, true)
         main.removeChild(chargement)
-        main.appendChild(clone);
+        main.appendChild(clone)
     
         const city = document.querySelector(".city")
         const nowIcon = document.querySelector(".now-icon")
@@ -98,7 +98,7 @@ const updateUI = (data) => {
 navigator.geolocation.getCurrentPosition( 
     getWeatherOf, 
     (error) => console.log('getCurrentPosition error ~>', error), 
-    {timeout: 1000}
+    {timeout: 5000}
 )
 
 
