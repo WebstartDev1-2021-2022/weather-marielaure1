@@ -98,7 +98,7 @@ const updateUI = (data) => {
 navigator.geolocation.getCurrentPosition( 
     getWeatherOf, 
     (error) => console.log('getCurrentPosition error ~>', error), 
-    {timeout: 5000}
+    {timeout: 3000}
 )
 
 

@@ -165,6 +165,10 @@ main > .hours-days > .hours > .hour > .hour-icon {
           transform: translateX(-50%);
 }
 
+main > .hours-days .hours::-webkit-scrollbar {
+  display: none;
+}
+
 main > .hours-days > .days {
   height: 70vh;
   width: 100%;
@@ -221,6 +225,47 @@ main > .hours-days > .days > .day > .day-temperature {
   }
   100% {
     bottom: 1vh;
+  }
+}
+
+@media (min-width: 700px) {
+  h1 {
+    width: 50vw;
+    background-color: inherit;
+    -webkit-backdrop-filter: inherit;
+            backdrop-filter: inherit;
+    display: inline;
+    margin: 20px;
+  }
+  main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  main > .now {
+    width: 50vw;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  main > .now > .down-arrow {
+    display: none;
+  }
+  main > .bg-blur {
+    position: absolute;
+    top: 0;
+    left: 50vw;
+    width: 50vw;
+    height: 100vh;
+    background-color: rgba(2, 112, 110, 0.157);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    z-index: 2;
+  }
+  main > .hours-days {
+    width: 50vw;
   }
 }
 /*# sourceMappingURL=style.css.map */

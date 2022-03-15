@@ -149,6 +149,10 @@ main{
                 }
             }
         }
+
+        .hours::-webkit-scrollbar{
+            display: none;
+        }
     
         // Jours
         & > .days{
@@ -196,5 +200,46 @@ main{
 
     100%{
         bottom: 1vh;
+    }
+}
+
+@media (min-width: 700px){
+    h1 {
+        width: 50vw;
+        background-color: inherit;
+        backdrop-filter: inherit;
+        display: inline;
+        margin: 20px;
+    }
+    main{
+        display: flex;
+        justify-content: space-between;
+
+        & > .now{
+            width: 50vw;
+            box-sizing: border-box;
+
+            & > .down-arrow{
+                display: none;
+            }
+            
+        }
+
+        & > .bg-blur{
+            position: absolute;
+            top: 0;
+            left: 50vw;
+            width: 50vw;
+            height: 100vh;
+            background-color:rgba(2, 112, 110, 0.157);
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        & > .hours-days{
+            width: 50vw;
+
+        }
+
     }
 }
