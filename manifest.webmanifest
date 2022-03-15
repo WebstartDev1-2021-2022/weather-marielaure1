@@ -6,7 +6,7 @@
 
     "description": "Obtenez rapidement la météo locale pour les 24 prochaines heures et les cinq prochains jours !",
 
-    "display": "fullscreen",
+    "display": "standalone",
 
     "icons": [
 
@@ -22,7 +22,7 @@
 
         {
 
-            "src": "img/icon192.jpg",
+            "src": "img/icon-vector.jpg",
 
             "sizes": "192x192",
 
@@ -36,7 +36,7 @@
 
         {
 
-            "src": "img/icon512.jpg",
+            "src": "img/icon-vector.jpg",
 
             "sizes": "512x512",
 
