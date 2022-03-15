@@ -69,6 +69,24 @@ main > .now {
           box-sizing: border-box;
 }
 
+main > .now > .search-bar {
+  width: 200px;
+  height: 30px;
+  background-color: #FAFAFA;
+  margin: 11vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main > .now > .search-bar > .search {
+  height: 100%;
+}
+
+main > .now > .search-bar > .icon-search {
+  height: 25px;
+}
+
 main > .now > h2 {
   font-size: 30px;
   margin-top: 30vh;

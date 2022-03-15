@@ -61,6 +61,22 @@ main{
         z-index: 2;
         box-sizing: border-box;
 
+        & > .search-bar{
+            width: 200px;
+            height: 30px;
+            background-color: #FAFAFA;
+            margin: 11vh;
+            display: flex;
+
+            & > .search{
+                height: 100%;
+            }
+
+            & > .icon-search{
+                height: 25px;
+            }
+        }
+
         & > h2{
             font-size: 30px;
             margin-top: 30vh;
