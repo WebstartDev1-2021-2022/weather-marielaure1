@@ -69,27 +69,88 @@ main > .now {
           box-sizing: border-box;
 }
 
-main > .now > .search-bar {
-  width: 200px;
-  height: 30px;
-  background-color: #FAFAFA;
-  margin: 11vh;
+main > .now > .search {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: rgba(46, 46, 46, 0.753);
+  margin: 14vh 0 0 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
 }
 
-main > .now > .search-bar > .search {
+main > .now > .search > .search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #FAFAFA;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+main > .now > .search > .search-bar > .search-value {
   height: 100%;
+  display: none;
 }
 
-main > .now > .search-bar > .icon-search {
+main > .now > .search > .search-bar > .search-submit {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+}
+
+main > .now > .search > .search-bar > .search-submit > .icon-search {
   height: 25px;
+  width: 25px;
+}
+
+main > .now > .search:hover {
+  width: 200px;
+}
+
+main > .now > .search:hover > .search-bar {
+  width: 180px;
+}
+
+main > .now > .search:hover > .search-bar > .search-value {
+  height: 40px;
+  width: 140px;
+  display: block;
+  background-color: #FAFAFA;
+  outline: none;
+  border-radius: 20px;
+  border: none;
 }
 
 main > .now > h2 {
   font-size: 30px;
-  margin-top: 30vh;
+  margin-top: 18vh;
   text-align: center;
   font-weight: 600;
 }
@@ -127,8 +188,8 @@ main > .now > .down-arrow {
   height: 25px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  -webkit-animation: arrow 1.5s infinite;
-          animation: arrow 1.5s infinite;
+  -webkit-animation: arrow 2s infinite;
+          animation: arrow 2s infinite;
 }
 
 main > .bg-blur {

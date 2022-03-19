@@ -21,14 +21,28 @@
             </section>
         </main>
 
+        <?php 
+            
+            if(isset($_GET['search']) && !empty($_GET['search'])){
+                $search = $_GET['search'];
+            } else {
+                $search = "";
+            }
+            
+        ?>
+
         <template>
             <section class="now">
-                <div class="search-bar">
-                    <input type="search" name="search" class="search">
-                    <img class="icon-search" src="./img/icon-search.png" alt="search icon">
-                </div>
                 <h2 class="city"></h2>
                 <img class="now-icon" src="#" alt="">
+                <div class="search">
+                    <form method="GET" class="search-bar">
+                        <input type="search" name="search" class="search-value" value="<?= $search ?>">
+                        <button type="submit" class="search-submit">
+                            <img class="icon-search" src="./img/icon-search.png" alt="search icon">
+                        </button>
+                    </form>
+                </div>
                 <div class="now-infos">
                     <p class="description"></p>
                     <p class="temperature"></p>

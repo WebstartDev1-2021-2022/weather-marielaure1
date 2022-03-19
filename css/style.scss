@@ -61,25 +61,76 @@ main{
         z-index: 2;
         box-sizing: border-box;
 
-        & > .search-bar{
-            width: 200px;
-            height: 30px;
-            background-color: #FAFAFA;
-            margin: 11vh;
+        & > .search{
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: rgba(46, 46, 46, 0.753);
+            margin: 14vh 0 0 50%;
             display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%);
+            
 
-            & > .search{
-                height: 100%;
+            & > .search-bar{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #FAFAFA;
+                height: 40px;
+                width: 40px;
+                border-radius: 20px;
+
+                & > .search-value{
+                    height: 100%;
+                    display: none;
+                }
+    
+                & > .search-submit{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+    
+                    & > .icon-search{
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
             }
 
-            & > .icon-search{
-                height: 25px;
+            
+        }
+
+        & > .search:hover{
+            width: 200px;
+
+            & > .search-bar{
+                width: 180px;
+
+                & > .search-value{
+                    height: 40px;
+                    width: 140px;
+                    display: block;
+                    background-color: #FAFAFA;
+                    outline: none;
+                    border-radius: 20px;
+                    border: none;
+                }
+    
+                
+    
             }
+            
         }
 
         & > h2{
             font-size: 30px;
-            margin-top: 30vh;
+            margin-top: 18vh;
             text-align: center;
             font-weight: 600;
         }
@@ -117,7 +168,7 @@ main{
             width: 25px;
             height: 25px;
             transform: translateX(-50%);
-            animation: arrow 1.5s infinite;
+            animation: arrow 2s infinite;
         }
     }
 

@@ -12,25 +12,6 @@ const chargement = document.querySelector(".chargement")
 // Requête fetch
 const getWeatherOf = async (position) => {
     try{
-        // let lat = position.coords.latitude;
-        // let lon = position.coords.longitude;
-
-        const {latitude, longitude} = position.coords
-
-        const allPromise = Promise.all([
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`),
-            fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${longitude}&lat=${latitude}`)
-        ])
-
-        const [weatherResult, cityResult] = await allPromise   // Destructuration
-        const weatherData = await weatherResult.json()
-        const cityData = await cityResult.json()
-        
-        // weatherData = API Open weather map
-        // cityData = Ville de l'utilisateur avec l'API https://adresse.data.gouv.fr/api-doc/adresse#reverse
-        
-        updateUI(weatherData)
-
         // Disparition du chargement de la page
         var clone = document.importNode(template.content, true)
         main.removeChild(chargement)
@@ -42,6 +23,35 @@ const getWeatherOf = async (position) => {
         const nowTemperature = document.querySelector(".temperature")
         const hour = document.querySelectorAll(".hour")
         const day = document.querySelectorAll(".day")
+        let searchValue = document.querySelector(".search-value")
+        let searchSubmit = document.querySelector(".search-submit")
+        let cityName = searchValue.value
+
+
+        // Localisation ou recherche
+        let {latitude, longitude} = position.coords
+
+        if(cityName){
+            console.log("SEARCH MODE")
+            cityResult = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${cityName}&type=municipality&autocomplete=1`)
+            const cityData = await cityResult.json()
+
+            latitude = cityData.features[0].geometry.coordinates[1]
+            longitude = cityData.features[0].geometry.coordinates[0]
+        }
+        
+        const locateResult = await fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${longitude}&lat=${latitude}`)
+        const locateData = await locateResult.json()
+
+        const weatherResult = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`)
+        const weatherData = await weatherResult.json()
+       
+        
+        // weatherData = API Open weather map
+        // cityData = Ville de l'utilisateur avec l'API https://adresse.data.gouv.fr/api-doc/adresse#reverse
+        
+        updateUI(weatherData)
+        
 
         // Changement du background selon la nuit et le jour
           // dt temps en timestamp Unix = tps en ms depuis janvier 1970 = pour convertir faire *1000
@@ -57,7 +67,7 @@ const getWeatherOf = async (position) => {
         }
 
         // NOW : heure actuelle
-        city.innerText= `${cityData.features[0].properties.city}`
+        city.innerText= `${locateData.features[0].properties.city}`
         nowIcon.src = `img/${weatherData.current.weather[0].icon}.svg`
         nowDescription.innerText= `${weatherData.current.weather[0].description}`
         nowTemperature.innerText= `${Math.trunc(weatherData.current.temp)}°`
