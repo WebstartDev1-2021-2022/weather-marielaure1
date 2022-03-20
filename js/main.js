@@ -35,6 +35,7 @@ const getWeatherOf = async (position) => {
             console.log("SEARCH MODE")
             cityResult = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${cityName}&type=municipality&autocomplete=1`)
             const cityData = await cityResult.json()
+            console.log(cityData)
 
             latitude = cityData.features[0].geometry.coordinates[1]
             longitude = cityData.features[0].geometry.coordinates[0]
@@ -68,6 +69,7 @@ const getWeatherOf = async (position) => {
 
         // NOW : heure actuelle
         city.innerText= `${locateData.features[0].properties.city}`
+        searchValue.value = locateData.features[0].properties.city
         nowIcon.src = `img/${weatherData.current.weather[0].icon}.svg`
         nowDescription.innerText= `${weatherData.current.weather[0].description}`
         nowTemperature.innerText= `${Math.trunc(weatherData.current.temp)}°`

@@ -188,8 +188,8 @@ main > .now > .down-arrow {
   height: 25px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  -webkit-animation: arrow 2s infinite;
-          animation: arrow 2s infinite;
+  -webkit-animation: arrow 1.2s infinite;
+          animation: arrow 1.2s infinite;
 }
 
 main > .bg-blur {
