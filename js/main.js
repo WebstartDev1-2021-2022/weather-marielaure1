@@ -40,19 +40,21 @@ const getWeatherOf = async (position) => {
             longitude = cityData.features[0].geometry.coordinates[0]
         }
 
-        
-        const locateResult = await fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${longitude}&lat=${latitude}`)
-        const locateData = await locateResult.json()
-
-        const weatherResult = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`)
-        const weatherData = await weatherResult.json()
-       
-        
+        // Appel API
         // weatherData = API Open weather map
         // cityData = Ville de l'utilisateur avec l'API https://adresse.data.gouv.fr/api-doc/adresse#reverse
+
+        const allPromise = Promise.all([
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=fr&appid=${apiKey}`),
+            fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${longitude}&lat=${latitude}`)
+        ])
+
+        const [weatherResult, locateResult] = await allPromise   // Destructuration
+        const weatherData = await weatherResult.json()
+        const locateData = await locateResult.json()
         
-        console.log("locateData : ", locateData)
-        
+        updateUI(weatherData)
+        updateUI(locateData)
 
         // Changement du background selon la nuit et le jour
           // dt temps en timestamp Unix = tps en ms depuis janvier 1970 = pour convertir faire *1000
