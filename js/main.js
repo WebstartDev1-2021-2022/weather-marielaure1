@@ -16,30 +16,30 @@ const getWeatherOf = async (position) => {
         var clone = document.importNode(template.content, true)
         main.removeChild(chargement)
         main.appendChild(clone)
-    
+        
+        // Chargement des éléments html
         const city = document.querySelector(".city")
         const nowIcon = document.querySelector(".now-icon")
         const nowDescription = document.querySelector(".description")
         const nowTemperature = document.querySelector(".temperature")
         const hour = document.querySelectorAll(".hour")
         const day = document.querySelectorAll(".day")
-        let searchValue = document.querySelector(".search-value")
-        let searchSubmit = document.querySelector(".search-submit")
-        let cityName = searchValue.value
-
-
-        // Localisation ou recherche
+        let cityName = document.querySelector(".search-value").value
+        
+        // Stocker la localisation
         let {latitude, longitude} = position.coords
 
+        // Si l'utilisateur entre une ville, la latitude et longitude
         if(cityName){
             console.log("SEARCH MODE")
             cityResult = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${cityName}&type=municipality&autocomplete=1`)
             const cityData = await cityResult.json()
-            console.log(cityData)
+            console.log("cityData", cityData)
 
             latitude = cityData.features[0].geometry.coordinates[1]
             longitude = cityData.features[0].geometry.coordinates[0]
         }
+
         
         const locateResult = await fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${longitude}&lat=${latitude}`)
         const locateData = await locateResult.json()
@@ -51,7 +51,7 @@ const getWeatherOf = async (position) => {
         // weatherData = API Open weather map
         // cityData = Ville de l'utilisateur avec l'API https://adresse.data.gouv.fr/api-doc/adresse#reverse
         
-        updateUI(weatherData)
+        console.log("locateData : ", locateData)
         
 
         // Changement du background selon la nuit et le jour
@@ -68,10 +68,10 @@ const getWeatherOf = async (position) => {
         }
 
         // NOW : heure actuelle
-        city.innerText= `${locateData.features[0].properties.city}`
-        searchValue.value = locateData.features[0].properties.city
+        city.innerText= locateData.features[0].properties.city
+        cityName = locateData.features[0].properties.city
         nowIcon.src = `img/${weatherData.current.weather[0].icon}.svg`
-        nowDescription.innerText= `${weatherData.current.weather[0].description}`
+        nowDescription.innerText= weatherData.current.weather[0].description
         nowTemperature.innerText= `${Math.trunc(weatherData.current.temp)}°`
 
 

@@ -69,90 +69,118 @@ main > .now {
           box-sizing: border-box;
 }
 
-main > .now > .search {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  background-color: rgba(46, 46, 46, 0.753);
-  margin: 14vh 0 0 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+main > .now > .cityChoice {
+  position: absolute;
+  top: 12vh;
+  left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
-}
-
-main > .now > .search > .search-bar {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #FAFAFA;
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
 }
 
-main > .now > .search > .search-bar > .search-value {
-  height: 100%;
-  display: none;
-}
-
-main > .now > .search > .search-bar > .search-submit {
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
+main > .now > .cityChoice > .search-bar {
+  border-radius: 30px;
+  background-color: rgba(46, 46, 46, 0.7);
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border: none;
+  margin-right: 10px;
 }
 
-main > .now > .search > .search-bar > .search-submit > .icon-search {
-  height: 25px;
-  width: 25px;
-}
-
-main > .now > .search:hover {
+main > .now > .cityChoice > .search-bar > .search-value {
   width: 200px;
-}
-
-main > .now > .search:hover > .search-bar {
-  width: 180px;
-}
-
-main > .now > .search:hover > .search-bar > .search-value {
-  height: 40px;
-  width: 140px;
-  display: block;
-  background-color: #FAFAFA;
+  padding-left: 15px;
+  background: none;
+  color: #FAFAFA;
   outline: none;
   border-radius: 20px;
   border: none;
 }
 
+main > .now > .cityChoice > .search-bar > .search-submit {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+  background-color: #FAFAFA;
+}
+
+main > .now > .cityChoice > .search-bar > .search-submit > .icon-search {
+  height: 20px;
+  width: 20px;
+}
+
+main > .now > .cityChoice > .btn-location {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(167, 167, 167, 0.5);
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+main > .now > .cityChoice > .btn-location > input {
+  border: none;
+}
+
+main > .now > .cityChoice > .btn-location > .btn-block {
+  width: 30px;
+  height: 30px;
+  background-color: #fafafa;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  outline: none;
+  border: none;
+}
+
+main > .now > .cityChoice > .btn-location > .btn-block > .icon-location {
+  width: 20px;
+  height: 20px;
+}
+
 main > .now > h2 {
   font-size: 30px;
-  margin-top: 18vh;
+  margin-top: 25vh;
   text-align: center;
   font-weight: 600;
+  text-transform: capitalize;
 }
 
 main > .now > .now-icon {
@@ -304,6 +332,24 @@ main > .hours-days > .days > .day > .day-temperature {
   }
   100% {
     bottom: 1vh;
+  }
+}
+
+@-webkit-keyframes search {
+  0% {
+    width: 60px;
+  }
+  100% {
+    width: 200px;
+  }
+}
+
+@keyframes search {
+  0% {
+    width: 60px;
+  }
+  100% {
+    width: 200px;
   }
 }
 

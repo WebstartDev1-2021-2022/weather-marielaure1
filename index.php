@@ -22,12 +22,12 @@
         </main>
 
         <?php 
-            
+        $search = "";
             if(isset($_GET['search']) && !empty($_GET['search'])){
                 $search = $_GET['search'];
-            } else {
-                $search = "";
             }
+
+            
             
         ?>
 
@@ -35,11 +35,17 @@
             <section class="now">
                 <h2 class="city"></h2>
                 <img class="now-icon" src="#" alt="">
-                <div class="search">
+                <div class="cityChoice">
                     <form method="GET" class="search-bar">
                         <input type="search" name="search" class="search-value" value="<?= $search ?>">
                         <button type="submit" class="search-submit">
                             <img class="icon-search" src="./img/icon-search.png" alt="search icon">
+                        </button>
+                    </form>
+                    <form class="btn-location" method="GET">
+                        <input type="hidden" name="location" value="on">
+                        <button class="btn-block" type="submit">
+                           <img class="icon-location" src="./img/icon-location.png"/>
                         </button>
                     </form>
                 </div>
