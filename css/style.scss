@@ -30,6 +30,7 @@ main{
     
     // Chargement
     & > .chargement{
+        width: 100vw;
         height: 100vh;
         background-image: url("../img/bg-chargement.jpeg");
         background-position: center;
